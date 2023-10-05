@@ -68,7 +68,7 @@ function colorRefresh() {
   });
 } 
 
-// -- FUNCTION 5 --
+// -- Parse user data from localStorage onto page"
 // gets user input from localStorage and places it on the <textarea> values when the user
 // goes on the page next time. 
 $('.time-block').each(function(){
@@ -76,7 +76,21 @@ $('.time-block').each(function(){
   const value = localStorage.getItem(key);
   $(this).children('.description').val(value);
 
-})
+});
+
+// -- FUNCTION 5 --
+// Using DayJS to implement up-to-date date and time
+function updateTime() {
+  const dateEl = $('#date');
+  const timeEl = $('#time');
+  const currentDate = dayjs().format('dddd, MMMMM D, YYYY');
+  const currentTime = dayjs().format('hh:mm:ss A');
+  
+  dateEl.text(currentDate);
+  timeEl.text(currentTime);
+}
+
+
 
 
 
