@@ -47,10 +47,17 @@ function textEntry() {
     // its value whenever the user inputs text in the <textarea>
     const value = $(this).siblings('.description').val();
 
-
-
-  })
+    localStorage.setItem(key, value);
+  });
 }
+
+// FUNCTION 4
+function colorRefresh() {
+  // loop through each class of '.time-block'
+  $('.time-block').each(function() { 
+
+  });
+} 
 
 
   // TODO: Add a listener for click events on the save button. This code should
