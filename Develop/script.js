@@ -4,18 +4,18 @@
 const localeSettings = {};
 dayjs.locale(localeSettings);
 
-// FUNCTION 1
+// -- FUNCTION 1--
 // wait until the DOM is fully loaded before executing code inside the function below
 $(function () {
   //  gets the current hour of the day using DayJS
   const currentHour = dayjs(). format('H');
 
 
-  //FUNCTION 2
+  // -- FUNCTION 2 --
   // function below changes the color of each .time-block based on past, present, future relative to currentHour
   function hourlyColor() {
     // loops through all elements with the class .time-block
-    $('.time.block').each(function() {
+    $('.time-block').each(function() {
       // inside the .each loop, the line extracts the class of the current block.
       // 'this' refers to the current DOM element being processed and converts it into
       // an integer using parseINT
@@ -35,7 +35,7 @@ $(function () {
     });
   };
 
-// FUNCTION 3
+// -- FUNCTION 3 --
 // function below saves user's input into localStorage
 function textEntry() {
   // uses Jquery elements to target all elements with the class of '.saveBtn' and attaches
@@ -52,7 +52,7 @@ function textEntry() {
   });
 }
 
-// FUNCTION 4
+// -- FUNCTION 4 --
 // function to change color block based on past (grey, present (red), future (green), relative to the currentHour
 function colorRefresh() {
   // loop through each class of '.time-block'
@@ -67,6 +67,17 @@ function colorRefresh() {
     }
   });
 } 
+
+// -- FUNCTION 5 --
+// gets user input from localStorage and places it on the <textarea> values when the user
+// goes on the page next time. 
+$('.time-block').each(function(){
+  const key = $(this).attr('id');
+  const value = localStorage.getItem(key);
+  $(this).children('.description').val(value);
+
+})
+
 
 
   // TODO: Add a listener for click events on the save button. This code should
