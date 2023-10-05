@@ -36,6 +36,7 @@ $(function () {
   };
 
 // FUNCTION 3
+// function below saves user's input into localStorage
 function textEntry() {
   // uses Jquery elements to target all elements with the class of '.saveBtn' and attaches
   // a click event handler to them -  whenever the user clicks - the click event handler will be executed
@@ -52,10 +53,18 @@ function textEntry() {
 }
 
 // FUNCTION 4
+// function to change color block based on past (grey, present (red), future (green), relative to the currentHour
 function colorRefresh() {
   // loop through each class of '.time-block'
-  $('.time-block').each(function() { 
-
+  $('.time-block').each(function() {
+    const blockHour = parseInt(this.id);
+    if (blockHour = currentHour) {
+      $(this).removeClass('past future').addClass('present');
+    } else if (blockHour < currentHour) {
+      $(this).removeClass('present future').addClass('past');
+    } else if (blockHour > currentHour) {
+      $(this).removeClass('past present').addClass('future');
+    }
   });
 } 
 
