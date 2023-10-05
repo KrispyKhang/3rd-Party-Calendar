@@ -4,31 +4,53 @@
 const localeSettings = {};
 dayjs.locale(localeSettings);
 
+// FUNCTION 1
 // wait until the DOM is fully loaded before executing code inside the function below
 $(function () {
   //  gets the current hour of the day using DayJS
-  const currentHour = dayjs(). hour()
+  const currentHour = dayjs(). format('H');
 
 
+  //FUNCTION 2
   // function below changes the color of each .time-block based on past, present, future relative to currentHour
   function hourlyColor() {
     // loops through all elements with the class .time-block
     $('.time.block').each(function() {
-      // inside the .each loop, the line extracts the id of the current block.
-      // 'this' refers to the current DOM element being processed and convers it inti
+      // inside the .each loop, the line extracts the class of the current block.
+      // 'this' refers to the current DOM element being processed and converts it into
       // an integer using parseINT
       const blockHour = parseInt(this.id); 
 
+      // 'this' is being represented by each element with the class time-block
+
+      // checks to see if 'blockHour' - block represented by the current time
+      // is less than 'currentHour' (current hour of the day). if this condition
+      // is true, it adds a CSS class 'past'  to the current time block element. 
+      // if condition is false, removes the class 'past'
       
+      // this goes applies for 'past', 'present', 'future'
       $(this).toggleclass('past', blockHour < currentHour);
       $(this).toggleclass('present', blockHour === currentHour);
-      $(this).toggleclass('future', blockHour > currentHour);
-
-
-      
+      $(this).toggleclass('future', blockHour > currentHour);      
     });
   };
 
+// FUNCTION 3
+function textEntry() {
+  // uses Jquery elements to target all elements with the class of '.saveBtn' and attaches
+  // a click event handler to them -  whenever the user clicks - the click event handler will be executed
+  $('.saveBtn').on('click', function(){
+
+    // inside click event handler, the liner retrieves the ID of the parent element of .savBTN
+    const key = $(this).parent().attr('id');
+    // retrieved the .description class sibling when user clicks on saveBtn and retrieves
+    // its value whenever the user inputs text in the <textarea>
+    const value = $(this).siblings('.description').val();
+
+
+
+  })
+}
 
 
   // TODO: Add a listener for click events on the save button. This code should
