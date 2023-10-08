@@ -1,23 +1,29 @@
 
-
+// Javascript version, worked with tutor
+// selecting the '.template' id and the parent div with class containing '.container-fluid'
 const template = document.querySelector('#template');
 const targetEl = document.querySelector('.container-fluid');
+
+// get the current date and hour
 const date = new Date()
 const currentHour = date.getHours()
 const currentDate = date.toLocaleDateString()
 
-
+// selecting the date and time IDs in html
 const dateEl = document.querySelector("#date")
 const timeEl = document.querySelector("#time")
 
+// function to set the date and time display
 function setDateAndTime(){
     dateEl.textContent = currentDate
     timeEl.textContent = new Date().toLocaleTimeString()
 }
-setDateAndTime()
 
+// set the initial date and time, and update them evey second (clock keeps updating real-time)
+setDateAndTime()
 setInterval(setDateAndTime, 1000)
 
+// array representing the workday hours.
 const hoursArray = [
     9,
     10,
@@ -30,6 +36,7 @@ const hoursArray = [
     17,
 ];
 
+// loop through each workday hour and create time blocks 
 for (let i = 0; i < hoursArray.length; i++) {
     const element = hoursArray[i];
     const timeBlock = template.content.cloneNode(true);
@@ -37,12 +44,15 @@ for (let i = 0; i < hoursArray.length; i++) {
     const textArea = timeBlock.querySelector('.description');
     const button = timeBlock.querySelector('button')
 
-
+    // set label for this time block
     timeStamp.textContent = getTime(element)
+
+    // add an event listner to the save button to store user input in localStorage 
     button.addEventListener('click', ()=>{ //alternative for function()
         localStorage.setItem(element, textArea.value)
     })
 
+    // determine if the time block is in the past, present, future, based on the current hour
     if (element === currentHour) {
         textArea.classList.add('present');
     } else if (element < currentHour) {
@@ -51,14 +61,15 @@ for (let i = 0; i < hoursArray.length; i++) {
         textArea.classList.add('future');
     }
 
+    // retrieve the user input from localStorage and populate the textArea
     textArea.textContent =localStorage.getItem(element)
 
 
-
-
+    // appent the time blcok to the target element
     targetEl.append(timeBlock);
 };
 
+// function to convert the hour to a time format 
 function getTime(hour) {
     switch (hour) {
         case 9:
