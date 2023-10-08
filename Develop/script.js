@@ -28,9 +28,9 @@ $(function () {
       // if condition is false, removes the class 'past'
 
       // this goes applies for 'past', 'present', 'future'
-      $(this).toggleClass('past', blockHour < currentHour);
-      $(this).toggleClass('present', blockHour === currentHour);
-      $(this).toggleClass('future', blockHour > currentHour);
+      $(this).classList.add('past', blockHour < currentHour);
+      $(this).classList.add('present', blockHour === currentHour);
+      $(this).classList.add('future', blockHour > currentHour);
     });
   };
 
