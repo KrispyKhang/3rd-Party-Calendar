@@ -47,7 +47,7 @@ THEN the saved events persist
 ## Features
 # Walkthrough
 
-![](./Assets/images/ZodiacWalkthrough.gif)
+![](./Assets/3rd%20part%20calendar.gif)
 
 * you are presented with the Workday scheduler with a dynamic javascript code
 * the workday hours are from 9:00AM - 5:00PM
@@ -55,6 +55,4 @@ THEN the saved events persist
 * Current time and date is updated from Javascript updating every 1000 milisecond (1sec) - capturing real time and date.
 * users can implement data in the text area and it is stored in localStorage.
 
-##Screenshots of Webpage
-![](./Assets/images/ZodiacWalkthrough1.png)
 # BAMMM-BOOM - Keep track of your day-to-day! 
